@@ -57,8 +57,6 @@ namespace WebApi.Firebase.Controllers
                 //saving the token in a session variable
                 if (token != null)
                 {
-                    //HttpContext.Session.SetString("_UserToken", token);
-
                     return StatusCode(StatusCodes.Status200OK, token);
                 }
 
@@ -67,7 +65,6 @@ namespace WebApi.Firebase.Controllers
             catch (FirebaseAuthException ex)
             {
                 var firebaseEx = JsonConvert.DeserializeObject<FirebaseErrorModel>(ex.ResponseData);
-                //ModelState.AddModelError(String.Empty, firebaseEx.error.message);
                 return StatusCode(StatusCodes.Status500InternalServerError, firebaseEx);
             }
         }
@@ -75,11 +72,10 @@ namespace WebApi.Firebase.Controllers
         [HttpPost]
         [Route("testValidate")]
         [Authorize]
-        public async Task<ActionResult> Logout()
+        public async Task<ActionResult> TestMethod()
         {
             try
             {
-                //HttpContext.Session.Remove("_UserToken");
                 return StatusCode(StatusCodes.Status200OK);
             }
             catch(FirebaseAuthException ex)

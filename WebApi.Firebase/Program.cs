@@ -20,28 +20,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     FirebaseAuthenticationHandler>(JwtBearerDefaults.AuthenticationScheme,
     options => { });
 
-
-    //.AddJwtBearer(options =>
-    //{
-    //    options.Audience = "https://securetoken.google.com/1:804749815759:web:7bd39f61eceaab7b8aecba";
-    //    options.TokenValidationParameters = new TokenValidationParameters
-    //    {
-    //        ValidateIssuer = true,
-    //        ValidIssuer = "https://securetoken.google.com/1:804749815759:web:7bd39f61eceaab7b8aecba",
-    //        ValidateAudience = true,
-    //        ValidAudience = "1:804749815759:web:7bd39f61eceaab7b8aecba",
-    //        ValidateLifetime = true
-    //    };
-    //});
-
-//Add sessions
-//builder.Services.AddSession(options =>
-//{
-//    options.IdleTimeout = TimeSpan.FromMinutes(30);//We set Time here 
-//    options.Cookie.HttpOnly = true;
-//    options.Cookie.IsEssential = true;
-//});
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -55,7 +33,6 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
-//app.UseSession();
 
 app.MapControllers();
 
